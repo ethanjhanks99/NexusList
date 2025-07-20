@@ -51,4 +51,9 @@ When a task is marked complete the task becomes invisible to all folders and is 
 
 ### Tags
 
-* **Tag Creation**: Users can create tags to help 
+* **Tag Creation**: Users can create tags to label tasks. Created tags will be stored in a persistent database. When creating a tag, users will give the tag a name and a color.
+* **Tag reading**: Users will be able to filter tasks by their tags. Users will be able to see a task's tags regardless of what view is being used. 
+* **Tag Updating**: Users will be able to update a tag's name and color.
+* **Tag Deletion**: Users will be able to delete a tag. When a tag is deleted it is removed from all tasks that have the tag. Tasks do not get deleted by this operation.
+
+## 2. Non-Functional Requirements
