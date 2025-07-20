@@ -46,4 +46,9 @@ When a task is marked complete the task becomes invisible to all folders and is 
   * Name
   * Description
 * **Folder Reading**: Users will be able to view all folders that are associated with their account. When a folder is being viewed, the user will be able to see all tasks held by the folder.
-* **Folder Updating**: Users will be able to update their folders. This includes changing the folder's name and description. Users will be able to add and remove tasks to their folders.
+* **Folder Updating**: Users will be able to update their folders. This includes changing the folder's name and description. Users will be able to add/remove tasks to/from their folders.
+* **Folder Deletion**: Users will be able to delete folders they have created. When a folder is deleted it is moved to the trash. Users will have 30 days to either recover or permenently delete it before it is automatically deleted from the database. Once this happens it cannot be undone. Any tasks held within a deleted folder will also be deleted unless it is held in another folder. Tags do not count towards this.
+
+### Tags
+
+* **Tag Creation**: Users can create tags to help 
