@@ -14,11 +14,15 @@ This document outlines the necessary features, functionalities, and non-function
 
 ### Login/Sign-up
 
+An important part of any application where a users data needs to be secure and persistent.
+
 * **User Authentication and Authorization**: The application will support user registration and login functionalities, ensuring secuere access to the platform. Users must create accounts using either email and password credentials or third-party OAuth providers for streamlined access.
 * **Password Management and Security**: Secure password hashing will be implemented for all passwords. Hashing will be done on the server side. Forgot password functionality will allow users to reset their passwords via verified email.
 * **Error Handling**: If registration or login encounters an error, the user will receive details as to why the error occurred. If the user provided incorrect credentials, the user will be permitted to try again. If the user fails to provide correct credentials after a certain number of attempts, their account will be locked.
 
 ### Task Features
+
+Tasks are the core foundation of the application. They are the tool that users can use to help organize their lives and improve productivity, which in the long run can help users free up time for the things they want to do. 
 
 * **Task Creation**: Users will be able to create tasks that are stored in a persistent database. New tasks will always start with a completion status of incomplete.  They will be able to fill out the following:
   * Task name
@@ -42,6 +46,8 @@ When a task is marked complete the task becomes invisible to all folders and is 
 
 ### Folders
 
+Folders play an important part in helping organize the lives of the users. With folders, users can split their tasks up into the different parts of their lives (e.g., work, school, chores) and help organize things by priority and coming due soon. 
+
 * **Folder Creation**: Users will be able to create folders that are stored in a persistent database. Folders are always empty when first created. Folders can be initialized with the following data:
   * Name
   * Description
@@ -50,6 +56,8 @@ When a task is marked complete the task becomes invisible to all folders and is 
 * **Folder Deletion**: Users will be able to delete folders they have created. When a folder is deleted it is moved to the trash. Users will have 30 days to either recover or permenently delete it before it is automatically deleted from the database. Once this happens it cannot be undone. Any tasks held within a deleted folder will also be deleted unless it is held in another folder. Tags do not count towards this.
 
 ### Tags
+
+Tags are another tool a user can use to organize tasks. Say someone had a folder for school. They could further organize the tasks within their school folder by adding tags for different classes and types of assignments. This can be quicker and less of a headache than dealing with folders in folders in folders. Tasks can have an unlimited number of tags.
 
 * **Tag Creation**: Users can create tags to label tasks. Created tags will be stored in a persistent database. When creating a tag, users will give the tag a name and a color.
 * **Tag reading**: Users will be able to filter tasks by their tags. Users will be able to see a task's tags regardless of what view is being used. 
