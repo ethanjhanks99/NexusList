@@ -65,3 +65,12 @@ Tags are another tool a user can use to organize tasks. Say someone had a folder
 * **Tag Deletion**: Users will be able to delete a tag. When a tag is deleted it is removed from all tasks that have the tag. Tasks do not get deleted by this operation.
 
 ## 2. Non-Functional Requirements
+
+### Performance
+
+* **Scalablility**: App must be able to handle 10+ people simultaneously without performance degredations. Use of Kubernetes will help drastically with scaling.
+* **Response Time**: Operations should be fast. Assets should be created, updated, fetched and destroyed in reasonably fast times. Changing views should be instant, and filters and sorts should take no time to implement at all.
+
+## Security
+
+
