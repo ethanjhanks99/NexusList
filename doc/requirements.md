@@ -70,7 +70,17 @@ Tags are another tool a user can use to organize tasks. Say someone had a folder
 
 * **Scalablility**: App must be able to handle 10+ people simultaneously without performance degredations. Use of Kubernetes will help drastically with scaling.
 * **Response Time**: Operations should be fast. Assets should be created, updated, fetched and destroyed in reasonably fast times. Changing views should be instant, and filters and sorts should take no time to implement at all.
+* **Load Time**: The app and website should load in less than 10 seconds.
 
-## Security
+### Security
 
+* **Data Encryption**: All user data should be encrypted using secure encryption protocols such as SSL.
+* **Data Privacy**: The system should be compliant with the General Data Protection Regulation and other relevent data protection laws to protect user data.
+
+### Usability
+
+* The app should have a simle and clean user interface that provides a comfortable user experience.
+* The app should be intuitive to use and easy to navigate.
+* App documentation should be easily accessible to users.
+* The app should be compatible with both iOS and Android devices.
 
