@@ -83,4 +83,52 @@ Tags are another tool a user can use to organize tasks. Say someone had a folder
 * The app should be intuitive to use and easy to navigate.
 * App documentation should be easily accessible to users.
 * The app should be compatible with both iOS and Android devices.
+* The app should be easy to use for all users, especially those with disabilities. the app should comply with WCAG 2.1 AA accessibility standards.
+
+## 3. User Requirements
+
+### User Profile
+
+* **User Settings**: Users will have the option to edit their settings at any time. This includes changing notification settings, accessibility settings, and appearance settings.
+* **Profile Deactivation**: Users will have the option to deactivate their profile. Should they choose to do this, their information will be completely wiped from the app's database.
+
+## 4. MoSCoW Analysis
+
+### Must Have
+
+1. A web app with core pages:
+    * Login/signup, home screen, create task, create folder, read task, read folder, edit task, edit folder, user profile page.
+2. The ability to create an account and login.
+3. The ability to create a task, folder and tag
+4. The ability to update a task, folder and tag
+5. The ability to delete a task, folder and tag
+6. The ability to mark a task as complete
+7. The ability to mark a completed task as incomplete
+8. The ability to recover deleted assets (within 30 days)
+9. The ability to add tasks to a folder
+10. The ability to remove tasks from a folder
+11. The ability to add tag(s) to a task
+12. The ability to remove tag(s) from a task
+13. The ability to change user settings
+    * Accessibilty settings
+    * Notification settings
+    * Appearance settings
+14. The ability to deactivate the account
+15. The ability to set task priority
+16. The ability to set task due dates
+17. The ability to filter tasks
+18. The ability to sort tasks
+
+### Could Have
+
+1. Task completion goals
+2. The ability to add tasks to their calendar
+3. Monthly productivity breakdowns
+4. OAuth integration (unless ability to add to calendar is goal)
+5. Sound affects and haptic feedback
+6. Ability to do shared folders with other users
+
+### Won't Have
+
+1. Multiple profiles on a single account
 
