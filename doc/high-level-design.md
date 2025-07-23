@@ -44,3 +44,25 @@ The system should be designed to be efficient and durable so as to limit the ris
 * Procedures for the audit of security logs, physical security, and security procedures should be established, and regularly conducted.
 * The server and any other hardware that the system runs on should be updated regularly
 * Maintain a list of 3rd party services and software, and ensure that their security limitations are understood and accounted for.
+
+## Hardware Platforms
+
+This portion of the design covers what hardware the application will run on and what technologies will be used to ensure a friendly user experience regardless of their device.
+
+### Web App
+
+The web app is the most simple to implement. It will simply be a React frontend. The React front end will be containerized separate from the backend, and will be served to the user through a browser. This implementation will use mobil-first principles, to ensure users do not have a miserable experience if they were to click a link that takes them to the browser on their phone.
+
+### Desktop App
+
+The desktop app will be implemented using Electron. This implementation should not be too difficult, as it shares the same core as the web app does. This implementation is run client side, which means the web app will have to host the install files, and the users will have to download and install their files on their own machine (.dmg for MacOS, .exe for Windows, will need to figure out Linux).
+
+### Mobile Apps
+
+The mobile version of the app will be implemented using React Native. The mobile version of the app will take more rework than the desktop app. For Android users, I simply need to share the .apk file with them. For apple users, I will need to subscribe to be an apple developer and upload the app to TestFlight.
+
+#### Feature Parity
+
+The mobile implementaion will aim to maintain feature parity across iOS and Android platforms to ensure that all users, regardless of device, have access to the same core features. Platform-specific enhancements, such as the use of iOS's Haptic Touch or Android's notifications integration, will be considered to improve the native experience where applicable.
+
+
