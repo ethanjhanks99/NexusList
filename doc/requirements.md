@@ -6,7 +6,7 @@ NexusList is the last todo list app users will ever need. Users will be able to 
 
 ## Purpose of this Document
 
-This document outlines the necessary features, functionalities, and non-functional aspects required to develop the drink ordering app. It serves as a guide for understanding user needs to create a valuable, user-friendly solution.
+This document outlines the necessary features, functionalities, and non-functional aspects required to develop NexusList. It serves as a guide for understanding user needs to create a valuable, user-friendly solution.
 
 # Requirements
 
@@ -16,9 +16,9 @@ This document outlines the necessary features, functionalities, and non-function
 
 An important part of any application where a users data needs to be secure and persistent.
 
-* **User Authentication and Authorization**: The application will support user registration and login functionalities, ensuring secuere access to the platform. Users must create accounts using either email and password credentials or third-party OAuth providers for streamlined access.
+* **User Authentication and Authorization**: The application will support user registration and login functionalities, ensuring secuere access to the platform. Users must create accounts using either email and password credentials.
 * **Password Management and Security**: Secure password hashing will be implemented for all passwords. Hashing will be done on the server side. Forgot password functionality will allow users to reset their passwords via verified email.
-* **Error Handling**: If registration or login encounters an error, the user will receive details as to why the error occurred. If the user provided incorrect credentials, the user will be permitted to try again. If the user fails to provide correct credentials after a certain number of attempts, their account will be locked.
+* **Error Handling**: If registration or login encounters an error, the user will receive details as to why the error occurred. If the user provided incorrect credentials, the user will be permitted to try again. If the user fails to provide correct credentials after a certain number of attempts, their account will be locked. When the account is locked, the user will receive a temporary code to use to log in, then will be immediately required to reset their password in the app. The app will be unusable for users until they have done so.
 
 ### Task Features
 
@@ -63,6 +63,10 @@ Tags are another tool a user can use to organize tasks. Say someone had a folder
 * **Tag reading**: Users will be able to filter tasks by their tags. Users will be able to see a task's tags regardless of what view is being used. 
 * **Tag Updating**: Users will be able to update a tag's name and color.
 * **Tag Deletion**: Users will be able to delete a tag. When a tag is deleted it is removed from all tasks that have the tag. Tasks do not get deleted by this operation.
+
+### Deletion: Soft vs Hard
+
+When tasks and folders are deleted from any non-trash location, they are 'soft deleted', meaning they are put in the trash and can be recovered for 30 days. Users can also go to the trash and 'hard delete' items. This permanently removes the assets from the database, and cannot be undone. If nothing is done within the 30 after soft deletion, they are automatically hard deleted.
 
 ## 2. Non-Functional Requirements
 
