@@ -115,10 +115,43 @@ The server will be responsible for the core logic of the application, as well as
 ### Endpoints
 
 * `GET /tasks` - get all tasks
-* `GET /task/{taskId}` - get task with id `taskId`
-* `GET /folder/{folderID}` get folder with id `folderId`
+* `GET /tasks/{taskId}` - get task with id `taskId`
+* `GET /folders/{folderID}` -  get folder with id `folderId`
+* `GET /folders` - get all folders
 * `GET /trash/{userId}` - get trash associated with user
+* `POST /tasks` - create a new task
+* `POST /folders` - create a new folder
+* `POST /tags` - create a new tag
+* `PUT /tasks/{taskId}` - update task asset
+* `PUT /folders/{folderId}` - update folder
+* `PUT /folders/{folderId}/{taskId}?action=[rm/add]` - rm or add task to folder 
+* `PUT /tags/{tagId}` - update tag
+* `DELETE /tasks/{taskId}` - delete task
+* `DELETE /folders/{folderId}` - delete folder and all tags associated in it
+* `DELETE /tags/{tagId}` - delete tag
 
 ## Database
+
+### Tables
+
+1. Users
+
+Stores credentials, roles, and personal information needed by the application.Secure information such as passwords will be hashed and salted.
+
+2. Tasks
+
+Stores all infomation about tasks such as name, description, tags, folder, completion status, owner id, etc.
+
+3. Folders
+
+Stores information about folders such as name, description, owner id, etc.
+
+4. Tags
+
+Stores information about tags such as name, owner id, etc.
+
+5. Trash
+
+Stores information for all things put in the trash.
 
 
