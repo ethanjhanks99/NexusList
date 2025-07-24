@@ -82,4 +82,24 @@ This application will have a 3-tiered architecture: a React frontend, a Spring b
 
 ## Frontend
 
-React was chosen for it's modularity and its ability to reuse components. It has the flexability required for this project and will make creating an aesthetically pleasing app easy.
+React was chosen for it's modularity and its ability to reuse components. It has the flexability required for this project and will make creating an aesthetically pleasing app easy. At this time a component library has not been chosen, though possible options are ChakraUI, Ant Design, React-Bootstrap, and PrimeReact.
+
+## Backend
+
+The backend will use a Spring RestAPI. Spring is a Java-based framework that excels at making RestAPIs. 
+
+## Database
+
+PostgreSQL is a reliable open source relational database that offers great scalability.
+
+## Tools
+
+### Electron
+
+Electron is a framework used to bring React apps to desktops, including those running MacOS, Windows and Linux.
+
+### React Native
+
+React Native is a framework that allows you to build mobile apps for both iOS and Android using React.
+
+# Internal Componenets
