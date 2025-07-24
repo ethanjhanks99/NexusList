@@ -103,3 +103,22 @@ Electron is a framework used to bring React apps to desktops, including those ru
 React Native is a framework that allows you to build mobile apps for both iOS and Android using React.
 
 # Internal Componenets
+
+## Client
+
+The client will be responsible for rendering the UI and displaying the application views to the users. The client will be fully independent from the backend, allowing for easy updates and a more responsive architecture.
+
+## Server
+
+The server will be responsible for the core logic of the application, as well as querying the database as necessary. It will handle requests and coordinate actions between subcomponenets.
+
+### Endpoints
+
+* `GET /tasks` - get all tasks
+* `GET /task/{taskId}` - get task with id `taskId`
+* `GET /folder/{folderID}` get folder with id `folderId`
+
+
+## Database
+
+
