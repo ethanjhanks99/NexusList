@@ -117,7 +117,7 @@ The server will be responsible for the core logic of the application, as well as
 * `GET /tasks` - get all tasks
 * `GET /task/{taskId}` - get task with id `taskId`
 * `GET /folder/{folderID}` get folder with id `folderId`
-
+* `GET /trash/{userId}` - get trash associated with user
 
 ## Database
 
