@@ -1,7 +1,5 @@
 package com.nexuslist.backend.nexuslist.entities;
 
-import com.nexuslist.backend.nexuslist.enums.Priority;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -9,22 +7,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToMany;
 
 @Entity
-@Table(name="todos")
-public class Todo {
-
+@Table(name="Users")
+public class User {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
+    private String username;
 
-    private String description;
+    private String password;
 
-    @Enumerated(EnumType.STRING)
-    private Priority priority;
+    private String firstName;
 
-    private Boolean completed;
+    private String lastName;
 
 }
