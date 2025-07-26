@@ -12,10 +12,21 @@ public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String name;
 
     private String colorHex;
+
+    protected Tag() {}
+
+    public Tag(String name, String colorHex) {
+        this.name = name;
+        this.colorHex = colorHex;
+    }
+
+    public String getName() {return this.name;}
+
+    public String getColor() {return this.colorHex;}
     
 }

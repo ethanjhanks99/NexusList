@@ -33,7 +33,7 @@ public class Task {
     @JoinColumn(name="folder_id", nullable = true)
     private Folder folder;
 
-    private String title;
+    private String name;
 
     private String description;
 
@@ -53,25 +53,25 @@ public class Task {
     protected Task() {}
 
     public Task(String name, String description) {
-        this.title = name;
+        this.name = name;
         this.description = description;
         this.completed = false;
     }
 
     public long getId() {
-        return id;
+        return this.id;
     }
 
     public String getName() {
-        return title;
+        return this.name;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public Boolean getCompleted() {
-        return completed;
+        return this.completed;
     }
 
 }
