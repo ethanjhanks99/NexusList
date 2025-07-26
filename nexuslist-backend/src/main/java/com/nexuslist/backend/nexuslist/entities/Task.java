@@ -1,5 +1,6 @@
 package com.nexuslist.backend.nexuslist.entities;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,6 +41,8 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private Priority priority;
 
+    private LocalDateTime dueDate;
+
     @ManyToMany
     @JoinTable(
         name = "task_tags",
@@ -58,20 +61,23 @@ public class Task {
         this.completed = false;
     }
 
-    public long getId() {
-        return this.id;
+    public Task(String name, String description, LocalDateTime dueDate) {
+        this.name = name;
+        this.description = description;
+        this.completed = false;
+        this.dueDate = dueDate;
     }
 
-    public String getName() {
-        return this.name;
-    }
 
-    public String getDescription() {
-        return this.description;
-    }
+    // Getters
+    public Long getId() {return this.id;}
+    public String getName() {return this.name;}
+    public String getDescription() {return this.description;}
+    public Set<Tag> getTags() {return this.tags;}
+    public Boolean getCompleted() {return this.completed;}
+    public LocalDateTime getDueDate() {return this.dueDate;}
+    
+    // Setters
 
-    public Boolean getCompleted() {
-        return this.completed;
-    }
 
 }

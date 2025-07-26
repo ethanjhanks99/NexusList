@@ -25,6 +25,8 @@ public class Tag {
         this.colorHex = colorHex;
     }
 
+    public Long getId() {return this.id;}
+
     public String getName() {return this.name;}
 
     public String getColor() {return this.colorHex;}
