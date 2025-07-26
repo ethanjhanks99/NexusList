@@ -5,27 +5,31 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "Tags")
-public class Tag {
-
+@Table(name = "lists")
+public class TaskList {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    private String colorHex;
+    @OneToMany(mappedBy = "list")
+    private List<Task> tasks = new ArrayList<>();
 
-    protected Tag() {}
-
-    public Tag(String name, String colorHex) {
-        this.name = name;
-        this.colorHex = colorHex;
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

@@ -7,7 +7,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "folders")
 public class Folder {
@@ -30,9 +34,4 @@ public class Folder {
         this.title = title;
         this.description = description;
     }
-
-    public Long getId() {return this.id;}
-    public String getTitle() {return this.title;}
-    public String getDescription() {return this.description;}
-
 }

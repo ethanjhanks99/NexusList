@@ -5,7 +5,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name="Users")
 public class User {
@@ -31,10 +35,4 @@ public class User {
         this.lastName = lastName;
     }
     
-    public Long getId() {return this.id;}
-    public String getUsername() {return this.username;}
-    public String getPassword() {return this.password;}
-    public String getFirstName() {return this.firstName;}
-    public String getLastName() {return this.lastName;}
-
 }

@@ -17,7 +17,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name="tasks")
 public class Task {
@@ -31,7 +35,7 @@ public class Task {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="folder_id", nullable = true)
+    @JoinColumn(name="tasklist_id", nullable = false)
     private Folder folder;
 
     private String name;
@@ -67,17 +71,5 @@ public class Task {
         this.completed = false;
         this.dueDate = dueDate;
     }
-
-
-    // Getters
-    public Long getId() {return this.id;}
-    public String getName() {return this.name;}
-    public String getDescription() {return this.description;}
-    public Set<Tag> getTags() {return this.tags;}
-    public Boolean getCompleted() {return this.completed;}
-    public LocalDateTime getDueDate() {return this.dueDate;}
-    
-    // Setters
-
 
 }
