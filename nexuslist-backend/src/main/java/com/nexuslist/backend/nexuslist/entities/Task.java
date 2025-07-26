@@ -30,23 +30,30 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     @ManyToOne
     @JoinColumn(name="user_id", nullable = false)
     private User user;
 
+    @Setter
     @ManyToOne
     @JoinColumn(name="tasklist_id", nullable = false)
-    private Folder folder;
+    private TaskList list;
 
+    @Setter
     private String name;
 
+    @Setter
     private String description;
 
+    @Setter
     @Enumerated(EnumType.STRING)
     private Priority priority;
 
+    @Setter
     private LocalDateTime dueDate;
 
+    @Setter
     @ManyToMany
     @JoinTable(
         name = "task_tags",
@@ -55,6 +62,7 @@ public class Task {
     )
     private Set<Tag> tags = new HashSet<>();
 
+    @Setter
     private Boolean completed;
 
     protected Task() {}

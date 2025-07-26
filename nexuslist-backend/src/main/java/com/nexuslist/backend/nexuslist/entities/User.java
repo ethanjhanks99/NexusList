@@ -9,21 +9,24 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 @Entity
-@Table(name="Users")
+@Table(name="users")
 public class User {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     private String username;
 
+    @Setter
     private String password;
 
+    @Setter
     private String firstName;
 
+    @Setter
     private String lastName;
 
     protected User() {}
@@ -34,5 +37,5 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    
+
 }

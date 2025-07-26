@@ -11,7 +11,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 @Entity
 @Table(name = "folders")
 public class Folder {
@@ -24,8 +23,10 @@ public class Folder {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @Setter
     private String title;
 
+    @Setter
     private String description;
 
     protected Folder() {}

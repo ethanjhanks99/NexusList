@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Setter
 @Entity
 @Table(name = "lists")
 public class TaskList {
@@ -24,12 +23,20 @@ public class TaskList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     private String name;
 
+    @Setter
     @OneToMany(mappedBy = "list")
     private List<Task> tasks = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    protected TaskList() {}
+
+    public TaskList(String name) {
+        this.name = name;
+    }
 }

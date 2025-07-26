@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 @Entity
 @Table(name = "Tags")
 public class Tag {
@@ -18,8 +17,10 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     private String name;
 
+    @Setter
     private String colorHex;
 
     protected Tag() {}
