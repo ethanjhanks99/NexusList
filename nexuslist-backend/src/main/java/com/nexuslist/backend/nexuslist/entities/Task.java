@@ -30,7 +30,7 @@ public class Task {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="folder_id", nullable = false)
+    @JoinColumn(name="folder_id", nullable = true)
     private Folder folder;
 
     private String title;
@@ -49,5 +49,29 @@ public class Task {
     private Set<Tag> tags = new HashSet<>();
 
     private Boolean completed;
+
+    protected Task() {}
+
+    public Task(String name, String description) {
+        this.title = name;
+        this.description = description;
+        this.completed = false;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Boolean getCompleted() {
+        return completed;
+    }
 
 }
