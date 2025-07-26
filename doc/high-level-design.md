@@ -116,6 +116,8 @@ The server will be responsible for the core logic of the application, as well as
 
 * `GET /tasks` - get all tasks
 * `GET /tasks/{taskId}` - get task with id `taskId`
+* `GET /lists` - get all lists
+* `GET /lists/{listId}` - get list with id `listId`
 * `GET /folders/{folderID}` -  get folder with id `folderId`
 * `GET /folders` - get all folders
 * `GET /trash/{userId}` - get trash associated with user
@@ -154,4 +156,6 @@ Stores information about tags such as name, owner id, etc.
 
 Stores information for all things put in the trash.
 
+6. Lists
 
+Stores list name and list of tasks.
