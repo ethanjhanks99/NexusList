@@ -1,4 +1,4 @@
-package com.nexuslist.backend.nexuslist.entities;
+package com.nexuslist.backend.nexuslist.TaskList;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,6 +13,9 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.nexuslist.backend.nexuslist.Task.Task;
+import com.nexuslist.backend.nexuslist.User.User;
 
 @Getter
 @Entity

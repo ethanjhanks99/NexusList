@@ -1,4 +1,4 @@
-package com.nexuslist.backend.nexuslist.enums;
+package com.nexuslist.backend.nexuslist.Task;
 
 public enum Priority {
     LOW,

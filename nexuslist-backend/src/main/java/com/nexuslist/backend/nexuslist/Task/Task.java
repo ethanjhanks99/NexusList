@@ -1,10 +1,11 @@
-package com.nexuslist.backend.nexuslist.entities;
+package com.nexuslist.backend.nexuslist.Task;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.nexuslist.backend.nexuslist.enums.Priority;
+import com.nexuslist.backend.nexuslist.TaskList.TaskList;
+import com.nexuslist.backend.nexuslist.User.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -21,7 +22,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 @Entity
 @Table(name="tasks")
 public class Task {

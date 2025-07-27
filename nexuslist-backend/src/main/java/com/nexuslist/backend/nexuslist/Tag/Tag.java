@@ -1,4 +1,4 @@
-package com.nexuslist.backend.nexuslist.entities;
+package com.nexuslist.backend.nexuslist.Tag;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

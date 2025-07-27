@@ -1,4 +1,6 @@
-package com.nexuslist.backend.nexuslist.entities;
+package com.nexuslist.backend.nexuslist.Folder;
+
+import com.nexuslist.backend.nexuslist.User.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
