@@ -53,8 +53,7 @@ public class Task {
     @Setter
     private LocalDateTime dueDate;
 
-    @Setter
-    @ManyToMany
+    @ManyToMany()
     @JoinTable(
         name = "task_tags",
         joinColumns = @JoinColumn(name = "task_id"),

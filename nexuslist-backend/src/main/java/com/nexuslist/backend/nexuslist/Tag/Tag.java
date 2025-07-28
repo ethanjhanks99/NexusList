@@ -23,6 +23,8 @@ public class Tag {
     @Setter
     private String colorHex;
 
+
+
     protected Tag() {}
 
     public Tag(String name, String colorHex) {
