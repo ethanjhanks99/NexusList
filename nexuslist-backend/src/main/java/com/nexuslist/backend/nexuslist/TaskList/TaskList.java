@@ -5,16 +5,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.nexuslist.backend.nexuslist.Task.Task;
 import com.nexuslist.backend.nexuslist.User.User;
 
 @Getter
@@ -28,10 +23,6 @@ public class TaskList {
 
     @Setter
     private String name;
-
-    @Setter
-    @OneToMany(mappedBy = "list")
-    private List<Task> tasks = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
