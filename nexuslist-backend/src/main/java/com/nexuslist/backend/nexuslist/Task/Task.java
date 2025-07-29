@@ -20,10 +20,13 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
+@Setter
 @Entity
+@NoArgsConstructor
 @Table(name="tasks")
 public class Task {
 
@@ -31,27 +34,21 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name="user_id", nullable = false)
     private User user;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name="tasklist_id", nullable = false)
     private TaskList list;
 
-    @Setter
     private String name;
 
-    @Setter
     private String description;
 
-    @Setter
     @Enumerated(EnumType.STRING)
     private Priority priority;
 
-    @Setter
     private LocalDateTime dueDate;
 
     @ManyToMany()
@@ -62,10 +59,7 @@ public class Task {
     )
     private Set<Tag> tags = new HashSet<>();
 
-    @Setter
     private Boolean completed;
-
-    protected Task() {}
 
     public Task(String name, String description) {
         this.name = name;
@@ -78,6 +72,27 @@ public class Task {
         this.description = description;
         this.completed = false;
         this.dueDate = dueDate;
+    }
+
+    public void addTag(Tag tag) {
+        this.tags.add(tag);
+    }
+
+    public void removeTag(Tag tag) {
+        this.tags.remove(tag);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return id != null && id.equals(task.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 
 }

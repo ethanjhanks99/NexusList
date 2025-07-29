@@ -13,8 +13,4 @@ public interface TaskRepository extends JpaRepository<Task, Long>, JpaSpecificat
     List<Task> findByTaskList(TaskList list);
 
     List<Task> findByUser(User user);
-
-    List<Task> findByCompleted(boolean completed);
-
-    List<Task> findByPriority(Priority priority);
 }
