@@ -47,4 +47,4 @@ The task entity is the core of the application. There is no NexusList without ta
   * Description: Marks the completion status of the task
   * Required: yes
 
-When a task is created, the frontend will need to provide the userId the task name, and the list. The frontend can provide the description, priority, duedate, and the tags. The id will be automatically generated, and the completion status is always marked as incomplete on default.
+When a task is created, the frontend will need to provide the userId the task name, and the list. The frontend can provide the description, priority, duedate, and the tags. The id will be automatically generated, and the completion status is always marked as incomplete on default. The Lombok library will be used to automatically create getters and setters.
