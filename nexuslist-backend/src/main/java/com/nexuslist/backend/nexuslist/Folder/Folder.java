@@ -2,6 +2,7 @@ package com.nexuslist.backend.nexuslist.Folder;
 
 import com.nexuslist.backend.nexuslist.User.User;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -19,6 +20,7 @@ public class Folder {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "folder_id")
     private Long id;
 
     @ManyToOne
@@ -26,15 +28,12 @@ public class Folder {
     private User user;
 
     @Setter
-    private String title;
-
-    @Setter
-    private String description;
+    @Column(name = "folder_name", nullable = false)
+    private String name;
 
     protected Folder() {}
 
-    public Folder(String title, String description) {
-        this.title = title;
-        this.description = description;
+    public Folder(String name) {
+        this.name = name;
     }
 }

@@ -1,5 +1,6 @@
 package com.nexuslist.backend.nexuslist.User;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -15,18 +16,23 @@ public class User {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
     @Setter
+    @Column(name = "username", nullable = false, unique = true, length = 30)
     private String username;
 
     @Setter
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Setter
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @Setter
+    @Column(name = "last_name")
     private String lastName;
 
     protected User() {}

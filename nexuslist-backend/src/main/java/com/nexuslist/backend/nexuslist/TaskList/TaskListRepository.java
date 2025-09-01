@@ -9,8 +9,8 @@ import com.nexuslist.backend.nexuslist.User.User;
 
 public interface TaskListRepository extends JpaRepository<TaskList, Long> {
 
-    List<TaskList> getByUser(User user);
+    List<TaskList> findByUser(User user);
 
-    List<TaskList> getByFolder(Folder folder);
+    List<TaskList> findByFolder(Folder folder);
 
 }

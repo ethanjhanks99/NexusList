@@ -8,6 +8,7 @@ import com.nexuslist.backend.nexuslist.Tag.Tag;
 import com.nexuslist.backend.nexuslist.TaskList.TaskList;
 import com.nexuslist.backend.nexuslist.User.User;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +25,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
-@Setter
 @Entity
 @NoArgsConstructor
 @Table(name="tasks")
@@ -32,23 +32,33 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "task_id")
     private Long id;
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable = false)
     private User user;
 
+    @Setter
     @ManyToOne
     @JoinColumn(name="tasklist_id", nullable = false)
-    private TaskList list;
+    private TaskList taskList;
 
+    @Setter
+    @Column(name = "task_name", nullable = false, length = 50)
     private String name;
 
+    @Setter
+    @Column(name = "task_description")
     private String description;
 
+    @Setter
     @Enumerated(EnumType.STRING)
+    @Column(name = "priority")
     private Priority priority;
 
+    @Setter
+    @Column(name = "due_date")
     private LocalDateTime dueDate;
 
     @ManyToMany()
@@ -59,6 +69,8 @@ public class Task {
     )
     private Set<Tag> tags = new HashSet<>();
 
+    @Setter
+    @Column(name = "completed", nullable = false)
     private Boolean completed;
 
     public Task(String name, String description) {
