@@ -111,4 +111,16 @@ public class Task {
         return getClass().hashCode();
     }
 
+    @Override
+    public String toString() {
+        return "Task{" + 
+            "\n\tid=" + this.id + 
+            ",\n\tname=" + this.name + 
+            ",\n\tdescription=" + this.description +
+            ",\n\tpriority=" + this.priority +
+            ",\n\tdue date=" + this.dueDate +
+            ",\n\ttags=" + this.tags +
+            ",\n\tcompletion status=" + this.completed + 
+        "\n}";
+    }
 }
