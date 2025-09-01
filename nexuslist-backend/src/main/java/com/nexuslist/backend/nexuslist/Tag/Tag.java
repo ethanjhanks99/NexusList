@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.Getter;
@@ -20,7 +22,9 @@ public class Tag {
     private Long id;
 
     @Setter
-    @Column(name = "tag_name", nullable = false, length = 15)
+    @NotBlank(message = "Tag must have a name.")
+    @Size(min = 1, max = 15, message = "Tag name must be between 1 and 15 characters.")
+    @Column(name = "tag_name", length = 15)
     private String name;
 
     @Setter

@@ -20,6 +20,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -45,11 +47,13 @@ public class Task {
     private TaskList taskList;
 
     @Setter
-    @Column(name = "task_name", nullable = false, length = 50)
+    @NotBlank(message = "Task name cannot be empty.")
+    @Size(min = 1, max = 50, message = "Task name must be between 1 and 50 characters.")
+    @Column(name = "task_name", length = 50)
     private String name;
 
     @Setter
-    @Column(name = "task_description")
+    @Column(name = "task_description", length = 500)
     private String description;
 
     @Setter

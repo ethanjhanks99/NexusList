@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
@@ -25,7 +27,9 @@ public class TaskList {
     private Long id;
 
     @Setter
-    @Column(name = "tasklist_name", nullable = false, length = 50)
+    @NotBlank(message = "List name cannot be empty.")
+    @Size(min = 1, max = 20, message = "List name must be between 1 and 20 characters")
+    @Column(name = "tasklist_name", length = 20)
     private String name;
 
     @ManyToOne
@@ -33,7 +37,7 @@ public class TaskList {
     private User user;
     
     @ManyToOne
-    @JoinColumn(name = "folder_id", nullable = false)
+    @JoinColumn(name = "folder_id")
     private Folder folder;
 
     protected TaskList() {}

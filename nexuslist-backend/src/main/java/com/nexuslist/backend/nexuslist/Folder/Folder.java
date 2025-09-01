@@ -28,7 +28,7 @@ public class Folder {
     private User user;
 
     @Setter
-    @Column(name = "folder_name", nullable = false)
+    @Column(name = "folder_name", nullable = false, length = 20)
     private String name;
 
     protected Folder() {}

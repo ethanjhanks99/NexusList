@@ -6,6 +6,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,10 +22,14 @@ public class User {
     private Long id;
 
     @Setter
-    @Column(name = "username", nullable = false, unique = true, length = 30)
+    @NotBlank(message = "Must have a username.")
+    @Size(min = 6, max = 20, message = "Username must be between 6 and 20 characters.")
+    @Column(name = "username", unique = true, length = 20)
     private String username;
 
     @Setter
+    @NotBlank(message = "Password cannot be blank.")
+    @Size(min = 8, message = "Password must be at least 8 characters.")
     @Column(name = "password", nullable = false)
     private String password;
 
