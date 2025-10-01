@@ -2,11 +2,14 @@ package com.nexuslist.backend.nexuslist.Task;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.time.LocalDateTime;
 
 import com.nexuslist.backend.nexuslist.Tag.Tag;
 import com.nexuslist.backend.nexuslist.Tag.TagRepository;
+import com.nexuslist.backend.nexuslist.User.User;
+import com.nexuslist.backend.nexuslist.exception.ResourceNotFoundException;
 
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -20,7 +23,16 @@ public class TaskService {
         this.taskRepository = taskRepository;
         this.tagRepository = tagRepository;
     }
+
+    public Task getTask(Long taskId) {
+        return taskRepository.findById(taskId)
+                .orElseThrow(() -> new ResourceNotFoundException("Task does not exist with id: " + taskId));
+    }
     
+    public List<Task> getTasksForCurrentUser(User user) {
+        return taskRepository.findByUser(user);
+    }
+
     public List<Task> getTasksByCriteria(
         Priority priority,
         Boolean completed,
