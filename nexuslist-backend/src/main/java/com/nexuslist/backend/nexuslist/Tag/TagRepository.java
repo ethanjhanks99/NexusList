@@ -1,11 +1,10 @@
 package com.nexuslist.backend.nexuslist.Tag;
 
-import java.util.Set;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface TagRepository {
+public interface TagRepository extends JpaRepository<Tag, Long>, JpaSpecificationExecutor<Tag> {
     
-    Set<Tag> findAllById(Set<Long> tagIds);
-
     Tag findByName(String name);
 
 }

@@ -5,6 +5,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.nexuslist.backend.nexuslist.User.UserRepository;
+
 /**
  * Responsibilities
  * * One method: loadUserByUsername(String username)
@@ -16,9 +18,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class NexusUserDetailsService implements UserDetailsService{
 
+    private final UserRepository userRepository;
+
+    public NexusUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        return (UserDetails)userRepository.findByUsername(username);
     }
     
 }

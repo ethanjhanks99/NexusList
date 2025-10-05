@@ -29,7 +29,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *   is protected
  */
 
- @Component
+@Component
 public class JwtRequestFilter extends OncePerRequestFilter{
 
     @Autowired
