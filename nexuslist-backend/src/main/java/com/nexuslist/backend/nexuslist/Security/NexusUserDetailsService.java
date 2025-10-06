@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.nexuslist.backend.nexuslist.User.UserRepository;
+import com.nexuslist.backend.nexuslist.exception.ResourceNotFoundException;
 
 /**
  * Responsibilities
@@ -26,7 +27,8 @@ public class NexusUserDetailsService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return (UserDetails)userRepository.findByUsername(username);
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("No user with username " + username));
     }
     
 }
