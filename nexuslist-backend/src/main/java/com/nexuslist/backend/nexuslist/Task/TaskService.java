@@ -5,27 +5,42 @@ import java.util.List;
 import java.util.Set;
 import java.time.LocalDateTime;
 
+import com.nexuslist.backend.nexuslist.Security.UserAuthService;
 import com.nexuslist.backend.nexuslist.Tag.Tag;
 import com.nexuslist.backend.nexuslist.Tag.TagRepository;
 import com.nexuslist.backend.nexuslist.User.User;
 import com.nexuslist.backend.nexuslist.exception.ResourceNotFoundException;
 
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TaskService {
     private final TaskRepository taskRepository;
     private final TagRepository tagRepository;
+    private final UserAuthService userAuthService;
 
-    public TaskService(TaskRepository taskRepository, TagRepository tagRepository) {
+    public TaskService(TaskRepository taskRepository, TagRepository tagRepository, UserAuthService userAuthService) {
         this.taskRepository = taskRepository;
         this.tagRepository = tagRepository;
+        this.userAuthService = userAuthService;
     }
 
+    /*
+     * GET METHODS
+     */
+
     public Task getTask(Long taskId) {
-        return taskRepository.findById(taskId)
+        User currentUser = userAuthService.getCurrentUser();
+        Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new ResourceNotFoundException("Task does not exist with id: " + taskId));
+    
+        if (!task.getUser().getId().equals(currentUser.getId())) {
+            throw new AccessDeniedException("You do not have access to this task");
+        }
+
+        return task;
     }
     
     public List<Task> getTasksForCurrentUser(User user) {
@@ -92,5 +107,13 @@ public class TaskService {
         }
 
         return taskRepository.findAll(spec);
+    }
+
+    /*
+     * CREATE METHOD
+     */
+
+    public Task createTask() {
+        return new Task();
     }
 }
