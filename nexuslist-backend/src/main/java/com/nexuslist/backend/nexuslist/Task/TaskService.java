@@ -56,7 +56,7 @@ public class TaskService {
         return tasksDto;
     }
 
-    public List<Task> getTasksByCriteria(
+    public List<TaskDataResponse> getTasksByCriteria(
         Priority priority,
         Boolean completed,
         Set<Long> tagIds,
@@ -115,7 +115,14 @@ public class TaskService {
             }
         }
 
-        return taskRepository.findAll(spec);
+        List<TaskDataResponse> tasksDto = new ArrayList<>();
+        List<Task> tasks = taskRepository.findAll(spec);
+        
+        for (Task task : tasks) {
+            tasksDto.add(TaskDataResponse.fromTaskEntity(task));
+        }
+
+        return tasksDto;
     }
 
     /*
