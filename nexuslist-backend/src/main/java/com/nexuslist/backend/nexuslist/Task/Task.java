@@ -27,6 +27,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @Table(name="tasks")
@@ -41,27 +42,22 @@ public class Task {
     @JoinColumn(name="user_id", nullable = false)
     private User user;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name="tasklist_id", nullable = false)
     private TaskList taskList;
 
-    @Setter
     @NotBlank(message = "Task name cannot be empty.")
     @Size(min = 1, max = 50, message = "Task name must be between 1 and 50 characters.")
     @Column(name = "task_name", length = 50)
     private String name;
 
-    @Setter
     @Column(name = "task_description", length = 500)
     private String description;
 
-    @Setter
     @Enumerated(EnumType.STRING)
     @Column(name = "priority")
     private Priority priority;
 
-    @Setter
     @Column(name = "due_date")
     private LocalDateTime dueDate;
 
@@ -73,7 +69,6 @@ public class Task {
     )
     private Set<Tag> tags = new HashSet<>();
 
-    @Setter
     @Column(name = "completed", nullable = false)
     private Boolean completed;
 
@@ -81,13 +76,6 @@ public class Task {
         this.name = name;
         this.description = description;
         this.completed = false;
-    }
-
-    public Task(String name, String description, LocalDateTime dueDate) {
-        this.name = name;
-        this.description = description;
-        this.completed = false;
-        this.dueDate = dueDate;
     }
 
     public void addTag(Tag tag) {

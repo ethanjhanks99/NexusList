@@ -113,7 +113,17 @@ public class TaskService {
      * CREATE METHOD
      */
 
-    public Task createTask() {
-        return new Task();
+    public Task createTask(TaskDataRequest taskRequest) {
+        User currentUser = userAuthService.getCurrentUser();
+
+        Task newTask = new Task();
+
+        newTask.setName(taskRequest.getName());
+        newTask.setDescription(taskRequest.getDescription());
+        newTask.setDueDate(taskRequest.getDueDate());
+
+        newTask.setUser(currentUser);
+        newTask.setCompleted(false);
+        return taskRepository.save(newTask);
     }
 }
