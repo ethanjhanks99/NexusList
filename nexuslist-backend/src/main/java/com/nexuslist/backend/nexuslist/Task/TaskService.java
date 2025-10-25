@@ -1,5 +1,6 @@
 package com.nexuslist.backend.nexuslist.Task;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -31,7 +32,7 @@ public class TaskService {
      * GET METHODS
      */
 
-    public Task getTask(Long taskId) {
+    public TaskDataResponse getTask(Long taskId) {
         User currentUser = userAuthService.getCurrentUser();
         Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new ResourceNotFoundException("Task does not exist with id: " + taskId));
@@ -40,11 +41,19 @@ public class TaskService {
             throw new AccessDeniedException("You do not have access to this task");
         }
 
-        return task;
+        return TaskDataResponse.fromTaskEntity(task);
     }
     
-    public List<Task> getTasksForCurrentUser(User user) {
-        return taskRepository.findByUser(user);
+    public List<TaskDataResponse> getTasksForCurrentUser() {
+        User currentUser = userAuthService.getCurrentUser();
+
+        List<TaskDataResponse> tasksDto = new ArrayList<>();
+        List<Task> tasks = taskRepository.findByUser(currentUser);
+
+        for (Task task : tasks) {
+            tasksDto.add(TaskDataResponse.fromTaskEntity(task));
+        }
+        return tasksDto;
     }
 
     public List<Task> getTasksByCriteria(
