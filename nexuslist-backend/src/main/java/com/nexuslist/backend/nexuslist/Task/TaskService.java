@@ -113,7 +113,7 @@ public class TaskService {
      * CREATE METHOD
      */
 
-    public Task createTask(TaskDataRequest taskRequest) {
+    public TaskDataResponse createTask(TaskDataRequest taskRequest) {
         User currentUser = userAuthService.getCurrentUser();
 
         Task newTask = new Task();
@@ -138,6 +138,7 @@ public class TaskService {
 
         newTask.setUser(currentUser);
         newTask.setCompleted(false);
-        return taskRepository.save(newTask);
+        Task savedTask = taskRepository.save(newTask);
+        return TaskDataResponse.fromTaskEntity(savedTask);
     }
 }
