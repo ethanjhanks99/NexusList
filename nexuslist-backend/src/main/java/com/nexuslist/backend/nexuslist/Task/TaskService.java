@@ -121,6 +121,20 @@ public class TaskService {
         newTask.setName(taskRequest.getName());
         newTask.setDescription(taskRequest.getDescription());
         newTask.setDueDate(taskRequest.getDueDate());
+        newTask.setPriority(taskRequest.getPriority());
+
+        if (taskRequest.getTagIds() != null && !taskRequest.getTagIds().isEmpty()) {
+            List<Tag> tagsList = tagRepository.findAllById(taskRequest.getTagIds());
+            Set<Tag> tags = new HashSet<>(tagsList);
+
+            for (Tag tag : tags) {
+                if (!tag.getUser().getId().equals(currentUser.getId())) {
+                    throw new AccessDeniedException("User does not own tag with id: " + tag.getId());
+                }
+            }
+
+            newTask.setTags(tags);
+        }
 
         newTask.setUser(currentUser);
         newTask.setCompleted(false);
