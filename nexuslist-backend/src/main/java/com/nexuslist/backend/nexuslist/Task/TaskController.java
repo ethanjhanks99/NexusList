@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,9 +38,11 @@ public class TaskController {
         @RequestParam(required = false) Boolean completed,
         @RequestParam(required = false) Set<Long> tagIds,
         @RequestParam(required = false) LocalDateTime dueDate,
-        @RequestParam(required = false) Boolean beforeDueDate) {
+        @RequestParam(required = false) Boolean beforeDueDate,
+        @RequestParam(required = false) String sortField,
+        @RequestParam(required = false, defaultValue = "ASC") Sort.Direction sortDirection) {
 
-        return ResponseEntity.ok(taskService.getTasksByCriteria(priority, completed, tagIds, dueDate, beforeDueDate));
+        return ResponseEntity.ok(taskService.getTasksByCriteria(priority, completed, tagIds, dueDate, beforeDueDate, sortField, sortDirection));
     }
 
     @GetMapping("/{taskId}")
@@ -52,3 +55,4 @@ public class TaskController {
         return ResponseEntity.ok(taskService.getTasksForCurrentUser());
     }
 }
+

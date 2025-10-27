@@ -12,6 +12,7 @@ import com.nexuslist.backend.nexuslist.Tag.TagRepository;
 import com.nexuslist.backend.nexuslist.User.User;
 import com.nexuslist.backend.nexuslist.exception.ResourceNotFoundException;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
@@ -61,7 +62,9 @@ public class TaskService {
         Boolean completed,
         Set<Long> tagIds,
         LocalDateTime dueDate,
-        Boolean beforeDueDate
+        Boolean beforeDueDate,
+        String sortField,
+        Sort.Direction sortDirection
     ) {
         Specification<Task> spec = null;
         
@@ -115,8 +118,15 @@ public class TaskService {
             }
         }
 
+        Sort sort;
+        if (sortField != null && !sortField.isEmpty()) {
+            sort = Sort.by(sortDirection, sortField);
+        } else {
+            sort = Sort.unsorted();
+        }
+
         List<TaskDataResponse> tasksDto = new ArrayList<>();
-        List<Task> tasks = taskRepository.findAll(spec);
+        List<Task> tasks = taskRepository.findAll(spec, sort);
         
         for (Task task : tasks) {
             tasksDto.add(TaskDataResponse.fromTaskEntity(task));
